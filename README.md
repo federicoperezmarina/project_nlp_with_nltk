@@ -9,7 +9,7 @@ This repository is trying to explain how to use natural language toolkit in orde
 ## Docker image
 First of all we are going to use docker to prepare the environment.
 
-This is the Dockerfile were we can see how to install python and library vaderSentiment.
+This is the Dockerfile were we can see how to install python and library nltk.
 ```sh
 FROM ubuntu:latest
 
