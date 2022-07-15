@@ -29,17 +29,20 @@ RUN apt-get update && \
     python3 -m nltk.downloader all
 ```
 
+
 ## Docker build
 We need to create the docker image in order to launch / execute the code. This is the way to create the docker image
 ```sh
 docker build -t python_nlp_nltk .
 ```
 
+
 ## Docker run and execute
 Now we are able to use the image with the next command
 ```sh
 docker run -it python_nlp_nltk /bin/bash
 ```
+
 
 ## Tokenizing
 Tokenizing is spliting a text in sentences or in words.
@@ -68,7 +71,8 @@ Output:
 ['I', 'love', 'my', 'car', '.']
 ```
 
-Tokenizing by word: "nltk_word_tokenize.py"
+
+Tokenizing by word: "nltk_sentence_tokenize.py"
 ```python
 import nltk
 
@@ -90,6 +94,7 @@ Output:
 ```sh
 ['At', 'eight', "o'clock", 'on', 'Thursday', 'morning', 'Arthur', 'did', "n't", 'feel', 'very', 'good', '.', 'My', 'cat', 'is', 'beautiful', '.', 'I', 'love', 'my', 'car', '.']
 ```
+
 
 ## Stopwords
 Now we are going to tokenize a text and remove some stops words from it. Stop words are words that you want to ignore, so you filter them out of your text when you’re processing it. Very common words like 'in', 'is', and 'an' are often used as stop words since they don’t add a lot of meaning to a text in and of themselves.
@@ -140,6 +145,7 @@ After removing stop words from the said text:
 ['In', 'computing,', 'stop', 'words', 'words', 'filtered', 'processing', 'natural', 'language', 'data', '(text).', 'Though', '"stop', 'words"', 'usually', 'refers', 'common', 'words', 'language,', 'single', 'universal', 'list', 'stop', 'words', 'used', 'natural', 'language', 'processing', 'tools,', 'indeed', 'tools', 'even', 'use', 'list.', 'Some', 'tools', 'specifically', 'avoid', 'removing', 'stop', 'words', 'support', 'phrase', 'search.']
 ```   
 
+
 ## Tagging
 Part of speech is a grammatical term that deals with the roles words play when you use them together in sentences. Tagging parts of speech, or POS tagging, is the task of labeling the words in your text according to their part of speech.
 
@@ -168,6 +174,7 @@ Output
 ['At', 'eight', "o'clock", 'on', 'Thursday', 'morning', 'Arthur', 'did', "n't", 'feel', 'very', 'good', '.']
 [('At', 'IN'), ('eight', 'CD'), ("o'clock", 'NN'), ('on', 'IN'), ('Thursday', 'NNP'), ('morning', 'NN'), ('Arthur', 'NNP'), ('did', 'VBD'), ("n't", 'RB'), ('feel', 'VB'), ('very', 'RB'), ('good', 'JJ'), ('.', '.')]
 ```   
+
 
 ## Stemming
 ## Lemmatizing
