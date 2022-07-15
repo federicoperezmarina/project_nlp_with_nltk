@@ -177,6 +177,43 @@ Output
 
 
 ## Stemming
+Stemming is a text processing task in which you reduce words to their root, which is the core part of a word. For example, the words “helping” and “helper” share the root “help.” Stemming allows you to zero in on the basic meaning of a word rather than all the details of how it’s being used. NLTK has more than one stemmer, but you’ll be using the Porter stemmer.
+
+```python
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+
+stemmer = PorterStemmer()
+
+string_for_stemming = """
+The crew of the USS Discovery discovered many discoveries.
+Discovering is what explorers do."""
+
+words = word_tokenize(string_for_stemming)
+
+print("Words: ")
+print(words)
+
+stemmed_words = [stemmer.stem(word) for word in words]
+
+print("Stemmed Words: ")
+print(stemmed_words)
+```
+
+How to execute:
+```sh
+python3 nltk_stemming.py
+```
+
+Output
+```sh
+Words: 
+['The', 'crew', 'of', 'the', 'USS', 'Discovery', 'discovered', 'many', 'discoveries', '.', 'Discovering', 'is', 'what', 'explorers', 'do', '.']
+Stemmed Words: 
+['the', 'crew', 'of', 'the', 'uss', 'discoveri', 'discov', 'mani', 'discoveri', '.', 'discov', 'is', 'what', 'explor', 'do', '.']
+```   
+
+
 ## Lemmatizing
 ## Chunking
 ## Chinking
