@@ -40,6 +40,7 @@ Now we are able to use the image with the next command
 ```sh
 docker run -it python_nlp_nltk /bin/bash
 ```
+<<<<<<< HEAD
 
 ## Tokenizing
 Tokenizing is spliting a text in sentences or in words.
