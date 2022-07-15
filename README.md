@@ -40,7 +40,6 @@ Now we are able to use the image with the next command
 ```sh
 docker run -it python_nlp_nltk /bin/bash
 ```
-<<<<<<< HEAD
 
 ## Tokenizing
 Tokenizing is spliting a text in sentences or in words.
@@ -143,7 +142,6 @@ After removing stop words from the said text:
 
 ## Tagging
 Part of speech is a grammatical term that deals with the roles words play when you use them together in sentences. Tagging parts of speech, or POS tagging, is the task of labeling the words in your text according to their part of speech.
-
 
 
 ```python
