@@ -215,5 +215,58 @@ Stemmed Words:
 
 
 ## Lemmatizing
+Lemmatizing reduces words to their core meaning.
+
+Example with a word:
+```python
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+
+print("Lemmatizing scarves:")
+print(lemmatizer.lemmatize("scarves"))
+```
+
+How to execute:
+```sh
+python3 nltk_lemmatizing_word.py
+```
+
+Output
+```sh
+Lemmatizing scarves:
+scarf
+```  
+
+Example with a sentence:
+```python
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+
+lemmatizer = WordNetLemmatizer()
+string_for_lemmatizing = "The friends of DeSoto love scarves."
+
+words = word_tokenize(string_for_lemmatizing)
+lemmatized_words = [lemmatizer.lemmatize(word) for word in words]
+
+print("Sentence:")
+print(string_for_lemmatizing)
+print("Lemmatizing sentence:")
+print(lemmatized_words)
+```
+
+How to execute:
+```sh
+python3 nltk_lemmatizing_sentence.py
+```
+
+Output
+```sh
+Sentence:
+The friends of DeSoto love scarves.
+Lemmatizing sentence:
+['The', 'friend', 'of', 'DeSoto', 'love', 'scarf', '.']
+```
+
 ## Chunking
 ## Chinking
