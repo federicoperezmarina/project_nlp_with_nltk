@@ -269,4 +269,49 @@ Lemmatizing sentence:
 ```
 
 ## Chunking
+While tokenizing allows you to identify words and sentences, chunking allows you to identify phrases.
+
+```python
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+from nltk import RegexpParser
+from nltk import Tree
+
+sentence = "I have a very nice car. My car is a ferrari and it is red. I will never buy a Porche."
+
+print("Sentence: ")
+print(sentence)
+
+words = word_tokenize(sentence)
+print("Words of the sentence: ")
+print(words)
+
+words_pos_tags = pos_tag(words)
+print("Word pos tag: ")
+print(words_pos_tags)
+
+grammar = "NP: {<DT>?<JJ>*<NN>}"
+chunk_parser = RegexpParser(grammar)
+tree = chunk_parser.parse(words_pos_tags)
+tree.draw()
+```
+
+How to execute:
+```sh
+python3 nltk_chunking.py
+```
+
+Output
+```sh
+Sentence: 
+I have a very nice car. My car is a ferrari and it is red. I will never buy a Porche.
+Words of the sentence: 
+['I', 'have', 'a', 'very', 'nice', 'car', '.', 'My', 'car', 'is', 'a', 'ferrari', 'and', 'it', 'is', 'red', '.', 'I', 'will', 'never', 'buy', 'a', 'Porche', '.']
+Word pos tag: 
+[('I', 'PRP'), ('have', 'VBP'), ('a', 'DT'), ('very', 'RB'), ('nice', 'JJ'), ('car', 'NN'), ('.', '.'), ('My', 'PRP$'), ('car', 'NN'), ('is', 'VBZ'), ('a', 'DT'), ('ferrari', 'NN'), ('and', 'CC'), ('it', 'PRP'), ('is', 'VBZ'), ('red', 'JJ'), ('.', '.'), ('I', 'PRP'), ('will', 'MD'), ('never', 'RB'), ('buy', 'VB'), ('a', 'DT'), ('Porche', 'NNP'), ('.', '.')]
+```
+
+You can see the result with the image generated
+<img src="img/chunking_tree.png" />
+
 ## Chinking
