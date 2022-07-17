@@ -277,7 +277,7 @@ from nltk import pos_tag
 from nltk import RegexpParser
 from nltk import Tree
 
-sentence = "I have a very nice car. My car is a ferrari and it is red. I will never buy a Porche."
+sentence = "It's a dangerous business, Frodo, going out your door."
 
 print("Sentence: ")
 print(sentence)
@@ -304,14 +304,76 @@ python3 nltk_chunking.py
 Output
 ```sh
 Sentence: 
-I have a very nice car. My car is a ferrari and it is red. I will never buy a Porche.
+It's a dangerous business, Frodo, going out your door.
 Words of the sentence: 
-['I', 'have', 'a', 'very', 'nice', 'car', '.', 'My', 'car', 'is', 'a', 'ferrari', 'and', 'it', 'is', 'red', '.', 'I', 'will', 'never', 'buy', 'a', 'Porche', '.']
+['It', "'s", 'a', 'dangerous', 'business', ',', 'Frodo', ',', 'going', 'out', 'your', 'door', '.']
 Word pos tag: 
-[('I', 'PRP'), ('have', 'VBP'), ('a', 'DT'), ('very', 'RB'), ('nice', 'JJ'), ('car', 'NN'), ('.', '.'), ('My', 'PRP$'), ('car', 'NN'), ('is', 'VBZ'), ('a', 'DT'), ('ferrari', 'NN'), ('and', 'CC'), ('it', 'PRP'), ('is', 'VBZ'), ('red', 'JJ'), ('.', '.'), ('I', 'PRP'), ('will', 'MD'), ('never', 'RB'), ('buy', 'VB'), ('a', 'DT'), ('Porche', 'NNP'), ('.', '.')]
+[('It', 'PRP'), ("'s", 'VBZ'), ('a', 'DT'), ('dangerous', 'JJ'), ('business', 'NN'), (',', ','), ('Frodo', 'NNP'), (',', ','), ('going', 'VBG'), ('out', 'RP'), ('your', 'PRP$'), ('door', 'NN'), ('.', '.')]
 ```
 
 You can see the result with the image generated
 <img src="img/chunking_tree.png" />
 
 ## Chinking
+Chinking is used together with chunking, but while chunking is used to include a pattern, chinking is used to exclude a pattern.
+
+```python
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+from nltk import RegexpParser
+from nltk import Tree
+
+sentence = "It's a dangerous business, Frodo, going out your door."
+
+print("Sentence: ")
+print(sentence)
+
+words = word_tokenize(sentence)
+print("Words of the sentence: ")
+print(words)
+
+words_pos_tags = pos_tag(words)
+print("Word pos tag: ")
+print(words_pos_tags)
+
+grammar = """
+Chunk: {<.*>+}
+       }<JJ>{"""
+chunk_parser = RegexpParser(grammar)
+tree = chunk_parser.parse(words_pos_tags)
+print("Tree chinking: ")
+print(tree)
+tree.draw()
+```
+
+How to execute:
+```sh
+python3 nltk_chinking.py
+```
+
+Output
+```sh
+Sentence: 
+It's a dangerous business, Frodo, going out your door.
+Words of the sentence: 
+['It', "'s", 'a', 'dangerous', 'business', ',', 'Frodo', ',', 'going', 'out', 'your', 'door', '.']
+Word pos tag: 
+[('It', 'PRP'), ("'s", 'VBZ'), ('a', 'DT'), ('dangerous', 'JJ'), ('business', 'NN'), (',', ','), ('Frodo', 'NNP'), (',', ','), ('going', 'VBG'), ('out', 'RP'), ('your', 'PRP$'), ('door', 'NN'), ('.', '.')]
+Tree chinking: 
+(S
+  (Chunk It/PRP 's/VBZ a/DT)
+  dangerous/JJ
+  (Chunk
+    business/NN
+    ,/,
+    Frodo/NNP
+    ,/,
+    going/VBG
+    out/RP
+    your/PRP$
+    door/NN
+    ./.))
+```
+
+You can see the result with the image generated
+<img src="img/chinking_tree.png" />

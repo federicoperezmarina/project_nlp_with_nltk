@@ -16,7 +16,11 @@ words_pos_tags = pos_tag(words)
 print("Word pos tag: ")
 print(words_pos_tags)
 
-grammar = "NP: {<DT>?<JJ>*<NN>}"
+grammar = """
+Chunk: {<.*>+}
+       }<JJ>{"""
 chunk_parser = RegexpParser(grammar)
 tree = chunk_parser.parse(words_pos_tags)
+print("Tree chinking: ")
+print(tree)
 tree.draw()
